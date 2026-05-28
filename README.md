@@ -9,19 +9,9 @@ This is autoinstall GenieACS
 # Usage
 ```
 apt install git curl -y
-```
-```
 git clone https://github.com/rosmalamei/GACS
-```
-```
 cd GACS
-```
-```
 chmod +x *.sh
-```
-
-INSTALL GENIEACS DARKMODE ARMBIAN (STB)
-```
 bash genieacs-arm.sh
 ```
 
