@@ -159,7 +159,7 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     cd /opt
     git clone https://github.com/rosmalamei/genieacs
     cd /opt/genieacs
-    npm install -g genieacs@1.2.16    
+    npm install -g genieacs@1.2.13    
     useradd --system --no-create-home --user-group genieacs || true
     mkdir -p /opt/genieacs
     mkdir -p /opt/genieacs/ext
@@ -172,7 +172,6 @@ GENIEACS_UI_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-ui-access.log
 GENIEACS_DEBUG_FILE=/var/log/genieacs/genieacs-debug.yaml
 NODE_OPTIONS=--enable-source-maps
 GENIEACS_EXT_DIR=/opt/genieacs/ext
-GENIEACS_UI_JWT_SECRET=secret
 EOF
     node -e "console.log(\"GENIEACS_UI_JWT_SECRET=\" + require('crypto').randomBytes(128).toString('hex'))" >> /opt/genieacs/genieacs.env
     sudo chown genieacs:genieacs /opt/genieacs/genieacs.env
@@ -182,7 +181,8 @@ EOF
     
     # create systemd unit files
 ## CWMP
-    cat << EOF > /etc/systemd/system/genieacs-cwmp.service
+    #cat << EOF > /etc/systemd/system/genieacs-cwmp.service
+    cat << EOF> systemctl edit --force --full genieacs-cwmp
 [Unit]
 Description=GenieACS CWMP
 After=network.target
@@ -197,7 +197,8 @@ WantedBy=default.target
 EOF
 
 ## NBI
-    cat << EOF > /etc/systemd/system/genieacs-nbi.service
+    #cat << EOF > /etc/systemd/system/genieacs-nbi.service
+    cat << EOF> systemctl edit --force --full genieacs-nbi
 [Unit]
 Description=GenieACS NBI
 After=network.target
@@ -212,7 +213,8 @@ WantedBy=default.target
 EOF
 
 ## FS
-    cat << EOF > /etc/systemd/system/genieacs-fs.service
+    #cat << EOF > /etc/systemd/system/genieacs-fs.service
+    cat << EOF> systemctl edit --force --full genieacs-fs
 [Unit]
 Description=GenieACS FS
 After=network.target
@@ -227,7 +229,8 @@ WantedBy=default.target
 EOF
 
 ## UI
-    cat << EOF > /etc/systemd/system/genieacs-ui.service
+    #cat << EOF > /etc/systemd/system/genieacs-ui.service
+    cat << EOF> systemctl edit --force --full genieacs-ui
 [Unit]
 Description=GenieACS UI
 After=network.target
