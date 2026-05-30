@@ -96,10 +96,10 @@ apply_darkmode_assets() {
         global_node_modules="/usr/lib/node_modules"
     fi
     installed_genieacs_dir="${global_node_modules%/}/GACS"
-    if [ -d "${SCRIPT_DIR%/}/GACS/dpublic" ] && [ -d "$installed_genieacs_dir/public" ]; then
+    if [ -d "${SCRIPT_DIR%/}/dpublic" ] && [ -d "$installed_genieacs_dir/public" ]; then
         backup_dir="${installed_genieacs_dir%/}/dpublic.bak.$(date +%Y%m%d%H%M%S)"
         cp -a "${installed_genieacs_dir%/}/dpublic" "$backup_dir"
-        cp -a "${SCRIPT_DIR%/}/GACS/dpublic/." "${installed_genieacs_dir%/}/public/"
+        cp -a "${SCRIPT_DIR%/}/dpublic/." "${installed_genieacs_dir%/}/public/"
         return 0
     fi
     echo -e "${RED}Folder public darkmode atau GenieACS terinstall tidak ditemukan. Skip copy darkmode.${NC}"
