@@ -8,6 +8,26 @@ This is autoinstall GenieACS
 
 # Usage
 
+Install Nodejs V20 saja
+
+```
+apt install git curl -y
+git clone https://github.com/rosmalamei/GACS
+cd GACS
+chmod +x *.sh
+bash nodejs.sh
+```
+
+Install Nodejs v20 dan Mongodb saja:
+
+```
+apt install git curl -y
+git clone https://github.com/rosmalamei/GACS
+cd GACS
+chmod +x *.sh
+bash node_mongodb.sh
+```
+
 Install Genieacs Multitab Normal
 
 ```
@@ -26,16 +46,6 @@ git clone https://github.com/rosmalamei/GACS
 cd GACS
 chmod +x *.sh
 bash dark-genieacs-arm.sh
-```
-
-Atau untuk Install Mongodb saja:
-
-```
-apt install git curl -y
-git clone https://github.com/rosmalamei/GACS
-cd GACS
-chmod +x *.sh
-bash node_mongodb.sh
 ```
 
 Baca terlebih dahulu !!!
