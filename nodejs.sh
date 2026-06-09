@@ -29,9 +29,9 @@ if ! check_node_version; then
     echo -e "${GREEN}================== Menginstall NodeJS ==================${NC}"
     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
     sudo apt-get install -y nodejs
-    echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"
     cd
-    rm -r GACS    
+    rm -r GACS
+    echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"        
 else
     NODE_VERSION=$(node -v | cut -d 'v' -f 2)
     echo -e "${GREEN}============================================================================${NC}"

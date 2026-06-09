@@ -254,7 +254,9 @@ EOF
     echo -e "${GREEN}========== Install APP GenieACS selesai... ==============${NC}"
     systemctl daemon-reload
     systemctl enable --now genieacs-{cwmp,fs,ui,nbi}
-    systemctl start genieacs-{cwmp,fs,ui,nbi}    
+    systemctl start genieacs-{cwmp,fs,ui,nbi}  
+    cd
+    rm -r GACS  
     echo -e "${GREEN}================== Sukses genieACS CWMP, FS, NBI, UI ==================${NC}"
     
     

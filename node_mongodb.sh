@@ -146,6 +146,8 @@ else
     sudo apt-get update -y
     sudo apt-get install -y mongodb-org
     if ensure_mongodb_running; then
+        cd
+        rm -r GACS
         echo -e "${GREEN}================== Sukses MongoDB ==================${NC}"
     else
         echo -e "${RED}MongoDB gagal jalan. Pastikan arsitektur OS support, lalu cek log mongod di atas.${NC}"
