@@ -1,32 +1,7 @@
-## Tampilan
-<img width="1358" height="650" alt="Image" src="https://github.com/rosmalamei/genieacs/issues/1" />
-<img width="1358" height="650" alt="Image" src="https://github.com/rosmalamei/genieacs/issues/2" />
-<img width="1358" height="650" alt="Image" src="https://github.com/rosmalamei/genieacs/issues/3" />
-
 # INSTALL GENIEACS OTOMATIS
 This is autoinstall GenieACS 
 
 # Usage
-
-Install Nodejs V20 saja
-
-```
-apt install git curl -y
-git clone https://github.com/rosmalamei/GACS
-cd GACS
-chmod +x *.sh
-bash nodejs.sh
-```
-
-Install Nodejs v20 dan Mongodb saja:
-
-```
-apt install git curl -y
-git clone https://github.com/rosmalamei/GACS
-cd GACS
-chmod +x *.sh
-bash node_mongodb.sh
-```
 
 Install Genieacs Multitab Normal
 
@@ -36,16 +11,6 @@ git clone https://github.com/rosmalamei/GACS
 cd GACS
 chmod +x *.sh
 bash genieacs-arm.sh
-```
-
-Install Genieacs Multitab Dark Mode
-
-```
-apt install git curl -y
-git clone https://github.com/rosmalamei/GACS
-cd GACS
-chmod +x *.sh
-bash dark-genieacs-arm.sh
 ```
 
 Baca terlebih dahulu !!!
