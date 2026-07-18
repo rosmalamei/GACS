@@ -160,10 +160,10 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     cd /opt
     git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
-    npm install -g npm@10.8.2
-    npm fund
-    useradd --system --no-create-home --user-group genieacs   
-    mkdir -p /opt/genieacs/ext     
+    npm install -g npm@12.0.1    
+    useradd --system --no-create-home --user-group genieacs || true  
+    mkdir -p /opt/genieacs/ext  
+    mkdir -p /opt/genieacs/ext
     chown genieacs:genieacs /opt/genieacs/ext
 #Isi data Genieacs.env    
     cat << EOF > /opt/genieacs/genieacs.env
@@ -174,9 +174,10 @@ GENIEACS_UI_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-ui-access.log
 GENIEACS_DEBUG_FILE=/var/log/genieacs/genieacs-debug.yaml
 NODE_OPTIONS=--enable-source-maps
 GENIEACS_EXT_DIR=/opt/genieacs/ext
+GENIEACS_UI_JWT_SECRET=secret
 EOF
-    node -e "console.log(\"GENIEACS_UI_JWT_SECRET=\" + require('crypto').randomBytes(128).toString('hex'))" >> /opt/genieacs/genieacs.env
     sudo chown genieacs:genieacs /opt/genieacs/genieacs.env
+    chown genieacs. /opt/genieacs -R
     sudo chmod 600 /opt/genieacs/genieacs.env
     mkdir -p /var/log/genieacs
     chown genieacs:genieacs /var/log/genieacs
