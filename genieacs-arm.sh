@@ -256,7 +256,7 @@ EOF
     systemctl enable --now genieacs-{cwmp,fs,ui,nbi}
     systemctl start genieacs-{cwmp,fs,ui,nbi}  
     cd
-    rm -r GACS  
+  # rm -r GACS  
     echo -e "${GREEN}================== Sukses genieACS CWMP, FS, NBI, UI ==================${NC}"
     
     
