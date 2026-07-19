@@ -160,7 +160,8 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     cd /opt
     git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
-    npm install -g npm@12.0.1    
+    npm install -g npm@12.0.1 
+     npm install -g genieacs@1.2.13  
     useradd --system --no-create-home --user-group genieacs || true  
     mkdir -p /opt/genieacs/ext  
     mkdir -p /opt/genieacs/ext
@@ -176,9 +177,9 @@ NODE_OPTIONS=--enable-source-maps
 GENIEACS_EXT_DIR=/opt/genieacs/ext
 GENIEACS_UI_JWT_SECRET=secret
 EOF
-    sudo chown genieacs:genieacs /opt/genieacs/genieacs.env
+    chown genieacs:genieacs /opt/genieacs/genieacs.env
     chown genieacs. /opt/genieacs -R
-    sudo chmod 600 /opt/genieacs/genieacs.env
+    chmod 600 /opt/genieacs/genieacs.env
     mkdir -p /var/log/genieacs
     chown genieacs:genieacs /var/log/genieacs
     # create systemd unit files
