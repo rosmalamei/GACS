@@ -158,10 +158,10 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     echo -e "${GREEN}================== Menginstall genieACS CWMP, FS, NBI, UI ==================${NC}"
     cd
     cd /opt
-    git clone https://github.com/rosmalamei/genieacs.git
+    #git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
     npm install -g npm@12.0.1 
-     npm install -g genieacs@1.2.13  
+    #npm install -g genieacs@1.2.13  
     useradd --system --no-create-home --user-group genieacs || true  
     mkdir -p /opt/genieacs/ext  
     mkdir -p /opt/genieacs/ext
@@ -258,7 +258,7 @@ EOF
     systemctl enable --now genieacs-{cwmp,fs,ui,nbi}
     systemctl start genieacs-{cwmp,fs,ui,nbi}  
     cd
-  # rm -r GACS  
+    rm -r GACS  
     echo -e "${GREEN}================== Sukses genieACS CWMP, FS, NBI, UI ==================${NC}"
     
     
