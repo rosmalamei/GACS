@@ -108,7 +108,7 @@ check_node_version() {
 
 if ! check_node_version; then
     echo -e "${GREEN}================== Menginstall NodeJS ==================${NC}"
-    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
     sudo apt-get install -y nodejs
     echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"
 else
