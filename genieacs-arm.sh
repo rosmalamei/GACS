@@ -158,7 +158,7 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     echo -e "${GREEN}================== Menginstall genieACS CWMP, FS, NBI, UI ==================${NC}"
     cd
     cd /opt
-    #git clone https://github.com/rosmalamei/genieacs.git
+    git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
     npm install -g npm@12.0.1 
     #npm install -g genieacs@1.2.13  
