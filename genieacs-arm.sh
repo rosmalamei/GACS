@@ -175,9 +175,9 @@ GENIEACS_DEBUG_FILE=/var/log/genieacs/genieacs-debug.yaml
 NODE_OPTIONS=--enable-source-maps
 GENIEACS_EXT_DIR=/opt/genieacs/ext
 EOF
-    chown genieacs:genieacs /opt/genieacs/genieacs.env
-    chown genieacs. /opt/genieacs -R
-    chmod 600 /opt/genieacs/genieacs.env
+    node -e "console.log(\"GENIEACS_UI_JWT_SECRET=\" + require('crypto').randomBytes(128).toString('hex'))" >> /opt/genieacs/genieacs.env
+    sudo chown genieacs:genieacs /opt/genieacs/genieacs.env
+    sudo chmod 600 /opt/genieacs/genieacs.env
     mkdir -p /var/log/genieacs
     chown genieacs:genieacs /var/log/genieacs
     # create systemd unit files
