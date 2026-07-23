@@ -161,11 +161,10 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     cd /opt
     git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
-    npm install -g npm@12.0.1 
-     npm install -g genieacs@1.2.13  
-    useradd --system --no-create-home --user-group genieacs || true  
-    mkdir -p /opt/genieacs/ext  
-    mkdir -p /opt/genieacs/ext
+    npm install
+    npm run build
+    useradd --system --no-create-home --user-group genieacs   
+    mkdir -p /opt/genieacs/ext     
     chown genieacs:genieacs /opt/genieacs/ext
 #Isi data Genieacs.env    
     cat << EOF > /opt/genieacs/genieacs.env
