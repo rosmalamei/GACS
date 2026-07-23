@@ -140,13 +140,14 @@ else
     
     sudo apt-get update -y
     sudo wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_arm64.deb
-#    sudo apt-get update -y
-#    sudo apt-get install -y gnupg curl
-#    sudo install -d -m 0755 /usr/share/keyrings
-#    curl -fsSL "https://www.mongodb.org/static/pgp/server-${mongodb_major}.asc" | sudo gpg --dearmor --batch --yes --output "/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg"
-#    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg ] https://repo.mongodb.org/apt/ubuntu ${ubuntu_codename:-focal}/mongodb-org/${mongodb_major} multiverse" | sudo tee "/etc/apt/sources.list.d/mongodb-org-${mongodb_major}.list" > /dev/null
-    sudo apt-get update -y
     sudo apt-get install mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8
+    sudo apt-get update -y
+    sudo apt-get install -y gnupg curl
+    sudo install -d -m 0755 /usr/share/keyrings
+    curl -fsSL "https://www.mongodb.org/static/pgp/server-${mongodb_major}.asc" | sudo gpg --dearmor --batch --yes --output "/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg"
+    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg ] https://repo.mongodb.org/apt/ubuntu ${ubuntu_codename:-focal}/mongodb-org/${mongodb_major} multiverse" | sudo tee "/etc/apt/sources.list.d/mongodb-org-${mongodb_major}.list" > /dev/null
+    sudo apt-get update -y
+    
     if ensure_mongodb_running; then
         echo -e "${GREEN}================== Sukses MongoDB ==================${NC}"
     else
