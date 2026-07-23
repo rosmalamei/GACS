@@ -137,7 +137,8 @@ else
     if [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ]; then
         mongodb_major="4.4.8"
     fi
-
+    
+    sudo apt-get update -y
     sudo wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb && dpkg -i libssl1.1_1.1.1f-1ubuntu2_arm64.deb
 #    sudo apt-get update -y
 #    sudo apt-get install -y gnupg curl
