@@ -108,7 +108,7 @@ check_node_version() {
 
 if ! check_node_version; then
     echo -e "${GREEN}================== Menginstall NodeJS ==================${NC}"
-    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
     sudo apt-get install -y nodejs
     echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"
 else
@@ -158,7 +158,7 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     echo -e "${GREEN}================== Menginstall genieACS CWMP, FS, NBI, UI ==================${NC}"
     cd
     cd /opt
-    git clone https://github.com/rosmalamei/genieacs.git
+    git clone https://github.com/rosmalamei/genieacs1.git
     cd genieacs
     npm install
     npm run build
