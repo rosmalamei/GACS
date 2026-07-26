@@ -108,7 +108,7 @@ check_node_version() {
 
 if ! check_node_version; then
     echo -e "${GREEN}================== Menginstall NodeJS ==================${NC}"
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
     sudo apt-get install -y nodejs
     echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"
 else
@@ -125,26 +125,32 @@ if ensure_mongodb_running; then
     echo -e "${GREEN}=================== MongoDB sudah ada & bisa diakses. ======================${NC}"
 else
     echo -e "${GREEN}================== Menginstall MongoDB ==================${NC}"
-    ubuntu_codename=""
-    if [ -r /etc/os-release ]; then
-        ubuntu_codename="$(. /etc/os-release && echo "${VERSION_CODENAME:-${UBUNTU_CODENAME:-}}")"
-    fi
-    if [ -z "$ubuntu_codename" ] && command -v lsb_release >/dev/null 2>&1; then
-        ubuntu_codename="$(lsb_release -sc)"
-    fi
+#    ubuntu_codename=""
+#    if [ -r /etc/os-release ]; then
+#        ubuntu_codename="$(. /etc/os-release && echo "${VERSION_CODENAME:-${UBUNTU_CODENAME:-}}")"
+#    fi
+#    if [ -z "$ubuntu_codename" ] && command -v lsb_release >/dev/null 2>&1; then
+#        ubuntu_codename="$(lsb_release -sc)"
+#    fi
 
-    mongodb_major="4.4"
-    if [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ]; then
-        mongodb_major="8.0"
-    fi
+#    mongodb_major="4.4"
+#    if [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ]; then
+#        mongodb_major="4.4.8"
+#    fi
 
-    sudo apt-get update -y
+#    sudo apt-get update -y
     sudo apt-get install -y gnupg curl
-    sudo install -d -m 0755 /usr/share/keyrings
-    curl -fsSL "https://www.mongodb.org/static/pgp/server-${mongodb_major}.asc" | sudo gpg --dearmor --batch --yes --output "/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg"
-    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-${mongodb_major}.gpg ] https://repo.mongodb.org/apt/ubuntu ${ubuntu_codename:-focal}/mongodb-org/${mongodb_major} multiverse" | sudo tee "/etc/apt/sources.list.d/mongodb-org-${mongodb_major}.list" > /dev/null
-    sudo apt-get update -y
-    sudo apt-get install -y mongodb-org
+#    sudo install -d -m 0755 /usr/share/keyrings
+    wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+    dpkg -i libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+    curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+    echo 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+    apt-get update -y
+    apt-get install mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8 -y
+    cd /etc/apt
+    sudo cp trusted.gpg trusted.gpg.d
+    cd
+    apt-get update -y
     if ensure_mongodb_running; then
         echo -e "${GREEN}================== Sukses MongoDB ==================${NC}"
     else
