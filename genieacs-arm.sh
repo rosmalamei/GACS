@@ -141,7 +141,7 @@ else
 #    sudo apt-get update -y
     sudo apt-get install -y gnupg curl
 #    sudo install -d -m 0755 /usr/share/keyrings
-    wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+#    wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb
     dpkg -i libssl1.1_1.1.1f-1ubuntu2_arm64.deb
     curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
     echo 'deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
