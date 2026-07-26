@@ -10,7 +10,7 @@ apt install git curl -y
 git clone https://github.com/rosmalamei/GACS
 cd GACS
 chmod +x *.sh
-bash genieacs-arm1.sh
+bash genieacs-arm.sh
 ```
 
 Baca terlebih dahulu !!!
